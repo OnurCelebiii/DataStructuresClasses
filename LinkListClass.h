@@ -229,4 +229,24 @@ class LinkedList{
         }
             index++;
         }
+
+        void sortList(){
+            Node<anyType>* outerLoop = head;
+            while(outerLoop != nullptr)
+            {
+                Node<anyType>* innerLoop = head;
+                while(innerLoop != nullptr)
+                {
+                    innerLoop = innerLoop->next;
+                    if(outerLoop->variable > innerLoop->variable)
+                    {
+                        anyType tempVar = innerLoop->variable;
+                        innerLoop->variable = outerLoop->variable;
+                        outerLoop->variable = tempVar;
+                    }
+                    innerLoop = innerLoop->next;
+                }
+                outerLoop = outerLoop->next;
+            }
+        }
 };

@@ -1,5 +1,5 @@
 # Single-Link-List-Class
-getIndex
+# getIndex
 push_back
 push_front
 print_list

@@ -196,6 +196,21 @@ class vector{
                 data = tempData;
                 capacity = newCapacity;
             }
+            if(index < capacity / 2){
+                int newCapacity = capacity /2;
+                if(newCapacity < 1){
+                capacity = 1;
+                }
+                else{
+                    anyType* tempData = new anyType[newCapacity];
+                    for(int i = 0 ; i < index ; i++){
+                        tempData[i] = data[i];
+                    }
+                    delete[] data;
+                    data = tempData;
+                    capacity = newCapacity;
+                }
+            }
         }
         
         void insertUsingIndex(int ind, anyType var){
@@ -214,6 +229,25 @@ class vector{
                 delete[] data;
                 data = tempVect;
                 index++;
+                capacity_control();
             }
-
+        void deleteSpesificIndex(int ind){
+            if(ind >= 0 && ind <= index){
+                capacity_control();
+                static int counter = 0;
+                anyType* tempVect = new anyType[capacity];
+                for(int i = 0 ; i < index ; i++)
+                {   
+                    if(ind == i){
+                        counter++;
+                    }
+                    tempVect[i] = data[counter];
+                    counter++;
+                }
+                delete [] data;
+                data = tempVect;
+                index--;
+                capacity_control();
+            }
+        }
 };

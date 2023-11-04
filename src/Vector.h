@@ -1,92 +1,91 @@
 template <class T> class Vector
 {
   private:
-    T *data;
-    int capacity;
-    int index;
+    T *m_data;
+    int m_capacity;
+    int m_index;
 
   public:
     Vector()
     {
-        capacity = 1;
-        index = 0;
-        data = NULL;
-        data = new T[capacity];
+        m_capacity = 1;
+        m_index = 0;
+        m_data = new T[m_capacity];
     }
-    int get_capacity() const { return capacity; }
+    int get_capacity() const { return m_capacity; }
 
-    int get_index() const { return index; }
+    int get_index() const { return m_index; }
 
     void push_back(T var)
     {
-        if (index == capacity)
+        if (m_index == m_capacity)
         {
-            int newCapacity = capacity * 2;
+            int newCapacity = m_capacity * 2;
             T *tempData = new T[newCapacity];
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < m_index; i++)
             {
-                tempData[i] = data[i];
+                tempData[i] = m_data[i];
             }
-            delete[] data;
-            data = tempData;
-            capacity = newCapacity;
+            delete[] m_data;
+            m_data = tempData;
+            m_capacity = newCapacity;
         }
-        data[index] = var;
-        index++;
+        m_data[m_index] = var;
+        m_index++;
     }
 
     void push_front(T var)
     {
-        if (index == capacity)
+        if (m_index == m_capacity)
         {
-            int newCapacity = capacity * 2;
+            int newCapacity = m_capacity * 2;
             T *tempData = new T[newCapacity];
             tempData[0] = var;
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < m_index; i++)
             {
-                tempData[i + 1] = data[i];
+                tempData[i + 1] = m_data[i];
             }
-            delete[] data;
-            data = tempData;
-            capacity = newCapacity;
+            delete[] m_data;
+            m_data = tempData;
+            m_capacity = newCapacity;
         }
         else
         {
-            T *tempData = new T[capacity];
+            T *tempData = new T[m_capacity];
             tempData[0] = var;
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < m_index; i++)
             {
-                tempData[i + 1] = data[i];
+                tempData[i + 1] = m_data[i];
             }
-            delete[] data;
-            data = tempData;
+            delete[] m_data;
+            m_data = tempData;
         }
-        index++;
+        m_index++;
     }
 
     void pop_back()
     {
-        if (index != 0)
+        if (m_index != 0)
         {
-            index--;
+            m_index--;
         }
-        if (index < capacity / 2)
+        if (m_index < m_capacity / 2)
         {
-            int newCapacity = capacity / 2;
+            int newCapacity = m_capacity / 2;
             if (newCapacity < 1)
             {
-                capacity = 1;
+                m_capacity = 1;
             }
             else
             {
                 T *tempData = new T[newCapacity];
-                for (int i = 0; i < index; i++)
+                for (int i = 0; i < m_index; i++)
                 {
-                    tempData[i] = data[i];
+                    tempData[i] = m_data[i];
                 }
-                delete[] data;
-                data = tempData;
-                capacity = newCapacity;
+                delete[] m_data;
+                m_data = tempData;
+                m_capacity = newCapacity;
             }
         }
     }
@@ -94,9 +93,9 @@ template <class T> class Vector
     bool isFind(T var)
     {
         bool find = false;
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < m_index; i++)
         {
-            if (data[i] == var)
+            if (m_data[i] == var)
             {
                 find = true;
             }
@@ -107,17 +106,17 @@ template <class T> class Vector
     void print_vector()
     {
         std::cout << "Vector: " << std::endl;
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < m_index; i++)
         {
-            std::cout << i << ". " << data[i] << std::endl;
+            std::cout << i << ". " << m_data[i] << std::endl;
         }
     }
 
     T getValueInIndex(int ind)
     {
-        if (ind >= 0 && ind <= index - 1)
+        if (ind >= 0 && ind <= m_index - 1)
         {
-            return data[ind];
+            return m_data[ind];
         }
         else
         {
@@ -127,9 +126,9 @@ template <class T> class Vector
 
     T getFirstItem()
     {
-        if (index > 0)
+        if (m_index > 0)
         {
-            return data[0];
+            return m_data[0];
         }
         else
         {
@@ -139,9 +138,9 @@ template <class T> class Vector
 
     T getLastItem()
     {
-        if (index > 0)
+        if (m_index > 0)
         {
-            return data[index - 1];
+            return m_data[m_index - 1];
         }
         else
         {
@@ -149,11 +148,11 @@ template <class T> class Vector
         }
     }
 
-    int sizeVector() { return sizeof(T) * index; }
+    int sizeVector() { return sizeof(T) * m_index; }
 
-    T *returnBeginAddress() { return data; }
+    T *returnBeginAddress() { return m_data; }
 
-    T *returnLastElementAddress() { return data + index; }
+    T *returnLastElementAddress() { return m_data + m_index; }
 
     void printWithAddress()
     {
@@ -168,9 +167,9 @@ template <class T> class Vector
 
     T &indexValueChange(int ind)
     {
-        if (ind >= 0 && ind < index)
+        if (ind >= 0 && ind < m_index)
         {
-            return data[ind];
+            return m_data[ind];
         }
         else
         {
@@ -180,9 +179,9 @@ template <class T> class Vector
 
     T &operator[](int ind)
     {
-        if (ind >= 0 && ind < index)
+        if (ind >= 0 && ind < m_index)
         {
-            return data[ind];
+            return m_data[ind];
         }
         else
         {
@@ -192,47 +191,47 @@ template <class T> class Vector
 
     void reset_vector()
     {
-        delete[] data;
-        index = 0;
-        capacity = 1;
+        delete[] m_data;
+        m_index = 0;
+        m_capacity = 1;
     }
 
     void clear_vector()
     {
         reset_vector();
-        T *data = new T[capacity];
+        m_data = new T[m_capacity];
     }
     void capacity_control()
     {
-        if (index == capacity)
+        if (m_index == m_capacity)
         {
-            int newCapacity = capacity * 2;
+            int newCapacity = m_capacity * 2;
             T *tempData = new T[newCapacity];
-            for (int i = 0; i < index; i++)
+            for (int i = 0; i < m_index; i++)
             {
-                tempData[i] = data[i];
+                tempData[i] = m_data[i];
             }
-            delete[] data;
-            data = tempData;
-            capacity = newCapacity;
+            delete[] m_data;
+            m_data = tempData;
+            m_capacity = newCapacity;
         }
-        if (index < capacity / 2)
+        if (m_index < m_capacity / 2)
         {
-            int newCapacity = capacity / 2;
+            int newCapacity = m_capacity / 2;
             if (newCapacity < 1)
             {
-                capacity = 1;
+                m_capacity = 1;
             }
             else
             {
                 T *tempData = new T[newCapacity];
-                for (int i = 0; i < index; i++)
+                for (int i = 0; i < m_index; i++)
                 {
-                    tempData[i] = data[i];
+                    tempData[i] = m_data[i];
                 }
-                delete[] data;
-                data = tempData;
-                capacity = newCapacity;
+                delete[] m_data;
+                m_data = tempData;
+                m_capacity = newCapacity;
             }
         }
     }
@@ -241,8 +240,8 @@ template <class T> class Vector
     {
         static int counter = 0;
         capacity_control();
-        T *tempVect = new T[capacity];
-        for (int i = 0; i < index + 1; i++)
+        T *tempVect = new T[m_capacity];
+        for (int i = 0; i < m_index + 1; i++)
         {
             if (ind == i)
             {
@@ -250,34 +249,34 @@ template <class T> class Vector
             }
             else
             {
-                tempVect[i] = data[counter];
+                tempVect[i] = m_data[counter];
                 counter++;
             }
         }
-        delete[] data;
-        data = tempVect;
-        index++;
+        delete[] m_data;
+        m_data = tempVect;
+        m_index++;
         capacity_control();
     }
     void deleteSpesificIndex(int ind)
     {
-        if (ind >= 0 && ind <= index)
+        if (ind >= 0 && ind <= m_index)
         {
             capacity_control();
             static int counter = 0;
-            T *tempVect = new T[capacity];
-            for (int i = 0; i < index; i++)
+            T *tempVect = new T[m_capacity];
+            for (int i = 0; i < m_index; i++)
             {
                 if (ind == i)
                 {
                     counter++;
                 }
-                tempVect[i] = data[counter];
+                tempVect[i] = m_data[counter];
                 counter++;
             }
-            delete[] data;
-            data = tempVect;
-            index--;
+            delete[] m_data;
+            m_data = tempVect;
+            m_index--;
             capacity_control();
         }
     }

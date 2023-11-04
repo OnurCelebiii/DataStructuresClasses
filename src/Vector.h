@@ -132,7 +132,7 @@ template <class T> class Vector
         }
         else
         {
-            return NULL;
+            return T(0);
         }
     }
 
@@ -144,7 +144,7 @@ template <class T> class Vector
         }
         else
         {
-            return NULL;
+            return T(0);
         }
     }
 

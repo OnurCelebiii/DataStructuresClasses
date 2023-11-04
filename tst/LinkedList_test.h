@@ -203,9 +203,3 @@ TEST_F(StdStringLinkedList, SearchStdStringInList)
     EXPECT_FALSE(list.search("Fuat"));
 }
 
-// Main function to run all tests
-int main(int argc, char **argv)
-{
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}

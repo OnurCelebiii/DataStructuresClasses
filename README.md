@@ -32,3 +32,4 @@
 - reset_vector
 - clear_vector
 - capacity_control
+- deleteSpesificIndex 

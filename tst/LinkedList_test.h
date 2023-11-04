@@ -202,4 +202,3 @@ TEST_F(StdStringLinkedList, SearchStdStringInList)
     EXPECT_TRUE(list.search("Caner"));
     EXPECT_FALSE(list.search("Fuat"));
 }
-

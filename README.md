@@ -1,6 +1,8 @@
 [![CMake](https://github.com/Mavrikant/Linked-List-Class-Cpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/Mavrikant/Linked-List-Class-Cpp/actions/workflows/cmake.yml)
 
-# Linked Listed Class Implementation in C++
+# Data Sctructures Impelemented in C++
+
+## Linked List Class
 - getSize
 - push_back
 - push_front
@@ -12,6 +14,30 @@
 - searchReturnAddr
 - deleteValue
 - insertAfterIndex
+
+## Vector Class
+- get_capacity
+- get_index
+- push_back
+- push_front
+- pop_back
+- isFind
+- print_vector
+- getValueInIndex
+- getFirstItem
+- getLastItem
+- sizeVector
+- returnBeginAddress
+- returnLastElementAddress
+- printWithAddress
+- indexValueChange
+- insertUsingIndex
+- operator[]
+- reset_vector
+- clear_vector
+- capacity_control
+- deleteSpesificIndex 
+
 
 ## Compile
 * ```git submodule update --init --recursive``` get gtest library

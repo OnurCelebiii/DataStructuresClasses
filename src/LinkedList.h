@@ -1,21 +1,21 @@
 #include <iostream>
 
 // Node Struct
-template <class anyType> struct Node
+template <class T> struct Node
 {
-    anyType variable;
+    T variable;
     Node *next;
 };
 
 // LinkedList Class
-template <class anyType> class LinkedList
+template <class T> class LinkedList
 {
   private:
     int index;
-    Node<anyType> *tail;
-    Node<anyType> *head;
+    Node<T> *tail;
+    Node<T> *head;
 
-    void emptyListAddNode(Node<anyType> *var)
+    void emptyListAddNode(Node<T> *var)
     {
         head = var;
         tail = var;
@@ -30,9 +30,9 @@ template <class anyType> class LinkedList
         index = 0;
     }
 
-    LinkedList(anyType var)
+    LinkedList(T var)
     {
-        Node<anyType> *temp = new Node<anyType>;
+        Node<T> *temp = new Node<T>;
         temp->variable = var;
         temp->next = nullptr;
         emptyListAddNode(temp);
@@ -43,9 +43,9 @@ template <class anyType> class LinkedList
 
     const bool isEmpty() { return (index == 0 || head == nullptr); }
 
-    void push_back(anyType var)
+    void push_back(T var)
     {
-        Node<anyType> *temp = new Node<anyType>;
+        Node<T> *temp = new Node<T>;
         temp->variable = var;
         temp->next = nullptr;
         if (head == nullptr || index == 0)
@@ -60,9 +60,9 @@ template <class anyType> class LinkedList
         index++;
     }
 
-    void push_front(anyType var)
+    void push_front(T var)
     {
-        Node<anyType> *temp = new Node<anyType>;
+        Node<T> *temp = new Node<T>;
         temp->variable = var;
         temp->next = nullptr;
         if (head == nullptr || index == 0)
@@ -79,7 +79,7 @@ template <class anyType> class LinkedList
 
     void print_list()
     {
-        Node<anyType> *temp = head;
+        Node<T> *temp = head;
         while (temp != nullptr)
         {
             std::cout << temp->variable << std::endl;
@@ -87,9 +87,9 @@ template <class anyType> class LinkedList
         }
     }
 
-    bool search(anyType var)
+    bool search(T var)
     {
-        Node<anyType> *temp = head;
+        Node<T> *temp = head;
         bool find = false;
         while (temp != nullptr)
         {
@@ -106,8 +106,8 @@ template <class anyType> class LinkedList
     {
         if (!isEmpty())
         {
-            Node<anyType> *currentNode = head;
-            Node<anyType> *previousNode = head;
+            Node<T> *currentNode = head;
+            Node<T> *previousNode = head;
             while (currentNode->next != nullptr)
             {
                 previousNode = currentNode;
@@ -124,7 +124,7 @@ template <class anyType> class LinkedList
     {
         if (!isEmpty())
         {
-            Node<anyType> *temp = head;
+            Node<T> *temp = head;
             temp = temp->next;
             delete head;
             head = temp;
@@ -147,8 +147,8 @@ template <class anyType> class LinkedList
             else
             {
                 static int counter = 1;
-                Node<anyType> *currentAddr = head;
-                Node<anyType> *prevAddr = head;
+                Node<T> *currentAddr = head;
+                Node<T> *prevAddr = head;
 
                 while (counter < ind)
                 {
@@ -162,10 +162,10 @@ template <class anyType> class LinkedList
             index--;
         }
     }
-    Node<anyType> *searchReturnAddr(anyType var)
+    Node<T> *searchReturnAddr(T var)
     {
-        Node<anyType> *returnAddr = nullptr;
-        Node<anyType> *currentAddr = head;
+        Node<T> *returnAddr = nullptr;
+        Node<T> *currentAddr = head;
         while (currentAddr != nullptr)
         {
             if (currentAddr->variable == var)
@@ -177,7 +177,7 @@ template <class anyType> class LinkedList
         return returnAddr;
     }
 
-    void deleteValue(anyType val)
+    void deleteValue(T val)
     {
         if (search(val) == true)
         {
@@ -191,8 +191,8 @@ template <class anyType> class LinkedList
             }
             else
             {
-                Node<anyType> *current = head;
-                Node<anyType> *prev = head;
+                Node<T> *current = head;
+                Node<T> *prev = head;
                 while (current != nullptr)
                 {
                     if (current->variable == val)
@@ -208,14 +208,14 @@ template <class anyType> class LinkedList
         }
     }
 
-    void insertAfterIndex(anyType var, int ind)
+    void insertAfterIndex(T var, int ind)
     {
 
         if (ind < 1 || ind > index + 1)
         {
             return;
         }
-        Node<anyType> *temp = new Node<anyType>;
+        Node<T> *temp = new Node<T>;
         temp->variable = var;
         temp->next = nullptr;
         if (ind == 1)
@@ -225,7 +225,7 @@ template <class anyType> class LinkedList
         }
         else
         {
-            Node<anyType> *current = head;
+            Node<T> *current = head;
             int counter = 1;
 
             while (counter < ind)

@@ -1,7 +1,8 @@
 #include "LinkedList.h"
 #include <gtest/gtest.h>
 
-TEST(OnurTest, isEmpty_false) {
+TEST(isEmpty, false)
+{
   LinkedList<int> myList;
 
   myList.push_back(1);
@@ -10,7 +11,8 @@ TEST(OnurTest, isEmpty_false) {
   ASSERT_EQ(false, myList.isEmpty());
 }
 
-TEST(OnurTest, isEmpty_true) {
+TEST(isEmpty, true)
+{
   LinkedList<int> myList;
 
   myList.push_back(1);
@@ -20,7 +22,15 @@ TEST(OnurTest, isEmpty_true) {
   ASSERT_EQ(true, myList.isEmpty());
 }
 
-int main(int argc, char **argv) {
+TEST(isEmpty, initial)
+{
+  LinkedList<int> myList;
+
+  ASSERT_EQ(true, myList.isEmpty());
+}
+
+int main(int argc, char **argv)
+{
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

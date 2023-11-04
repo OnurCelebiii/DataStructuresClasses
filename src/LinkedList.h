@@ -210,30 +210,27 @@ template <class T> class LinkedList
 
     void insertAfterIndex(T var, int ind)
     {
-
         if (ind < 1 || ind > index + 1)
         {
             return;
         }
-        Node<T> *temp = new Node<T>;
-        temp->variable = var;
-        temp->next = nullptr;
-        if (ind == 1)
+        else if (ind == 1)
         {
-            temp->next = head->next;
-            head->next = temp;
+            push_front(var);
+            return;
         }
         else
         {
             Node<T> *current = head;
             int counter = 1;
-
             while (counter < ind)
             {
                 current = current->next;
                 counter++;
             }
 
+            Node<T> *temp = new Node<T>;
+            temp->variable = var;
             temp->next = current->next;
             current->next = temp;
         }

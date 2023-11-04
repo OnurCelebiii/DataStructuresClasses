@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-// Vector Class
+
 template <class anyType>
 class vector{
     private:
@@ -152,9 +152,68 @@ class vector{
         }
 
         anyType& indexValueChange(int ind){
-            return data[ind];
+            if (ind >= 0 && ind < index) 
+            {
+                return data[ind];
+            } else {
+                throw "No Valid Index !!";
+            }
         }
 
-        void insertUsingIndex();
+        anyType& operator[](int ind){
+            if (ind >= 0 && ind < index) 
+            {
+                return data[ind];
+            } else 
+            {
+                throw "No Valid Index !!";
+            }
+
+        }
+
+        void reset_vector()
+        {
+            delete[]data;
+            index = 0;
+            capacity = 1;
+        }
+
+        void clear_vector()
+        {
+            reset_vector();
+            anyType* data = new anyType[capacity];
+        }
+        void capacity_control(){
+            if(index == capacity)
+            {
+                int newCapacity = capacity * 2;
+                anyType* tempData = new anyType[newCapacity];
+                for(int i = 0 ; i < index ; i++)
+                {
+                    tempData[i] = data[i];
+                }
+                delete[] data;
+                data = tempData;
+                capacity = newCapacity;
+            }
+        }
+        
+        void insertUsingIndex(int ind, anyType var){
+            static int counter  = 0;
+            capacity_control();
+                anyType* tempVect = new anyType[capacity];
+                for(int i = 0 ; i < index +1; i++){
+                    if(ind == i){
+                        tempVect[i] = var;
+                    }
+                    else{
+                        tempVect[i] = data[counter];
+                        counter++;
+                    }
+                }
+                delete[] data;
+                data = tempVect;
+                index++;
+            }
 
 };

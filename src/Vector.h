@@ -1,31 +1,28 @@
-#include <iostream>
-using namespace std;
-
-template <class anyType> class vector
+template <class T> class Vector
 {
   private:
-    anyType *data;
+    T *data;
     int capacity;
     int index;
 
   public:
-    vector()
+    Vector()
     {
         capacity = 1;
         index = 0;
         data = NULL;
-        data = new anyType[capacity];
+        data = new T[capacity];
     }
     int get_capacity() const { return capacity; }
 
     int get_index() const { return index; }
 
-    void push_back(anyType var)
+    void push_back(T var)
     {
         if (index == capacity)
         {
             int newCapacity = capacity * 2;
-            anyType *tempData = new anyType[newCapacity];
+            T *tempData = new T[newCapacity];
             for (int i = 0; i < index; i++)
             {
                 tempData[i] = data[i];
@@ -38,12 +35,12 @@ template <class anyType> class vector
         index++;
     }
 
-    void push_front(anyType var)
+    void push_front(T var)
     {
         if (index == capacity)
         {
             int newCapacity = capacity * 2;
-            anyType *tempData = new anyType[newCapacity];
+            T *tempData = new T[newCapacity];
             tempData[0] = var;
             for (int i = 0; i < index; i++)
             {
@@ -55,7 +52,7 @@ template <class anyType> class vector
         }
         else
         {
-            anyType *tempData = new anyType[capacity];
+            T *tempData = new T[capacity];
             tempData[0] = var;
             for (int i = 0; i < index; i++)
             {
@@ -82,7 +79,7 @@ template <class anyType> class vector
             }
             else
             {
-                anyType *tempData = new anyType[newCapacity];
+                T *tempData = new T[newCapacity];
                 for (int i = 0; i < index; i++)
                 {
                     tempData[i] = data[i];
@@ -94,7 +91,7 @@ template <class anyType> class vector
         }
     }
 
-    bool isFind(anyType var)
+    bool isFind(T var)
     {
         bool find = false;
         for (int i = 0; i < index; i++)
@@ -109,14 +106,14 @@ template <class anyType> class vector
 
     void print_vector()
     {
-        cout << "Vector: " << endl;
+        std::cout << "Vector: " << std::endl;
         for (int i = 0; i < index; i++)
         {
-            cout << i << ". " << data[i] << endl;
+            std::cout << i << ". " << data[i] << std::endl;
         }
     }
 
-    anyType getValueInIndex(int ind)
+    T getValueInIndex(int ind)
     {
         if (ind >= 0 && ind <= index - 1)
         {
@@ -128,7 +125,7 @@ template <class anyType> class vector
         }
     }
 
-    anyType getFirstItem()
+    T getFirstItem()
     {
         if (index > 0)
         {
@@ -140,7 +137,7 @@ template <class anyType> class vector
         }
     }
 
-    anyType getLastItem()
+    T getLastItem()
     {
         if (index > 0)
         {
@@ -152,24 +149,24 @@ template <class anyType> class vector
         }
     }
 
-    int sizeVector() { return sizeof(anyType) * index; }
+    int sizeVector() { return sizeof(T) * index; }
 
-    anyType *returnBeginAddress() { return data; }
+    T *returnBeginAddress() { return data; }
 
-    anyType *returnLastElementAddress() { return data + index; }
+    T *returnLastElementAddress() { return data + index; }
 
     void printWithAddress()
     {
-        anyType *first = returnBeginAddress();
-        anyType *last = returnLastElementAddress();
+        T *first = returnBeginAddress();
+        T *last = returnLastElementAddress();
         while (first != last)
         {
-            cout << *first << endl;
+            std::cout << *first << std::endl;
             first++;
         }
     }
 
-    anyType &indexValueChange(int ind)
+    T &indexValueChange(int ind)
     {
         if (ind >= 0 && ind < index)
         {
@@ -181,7 +178,7 @@ template <class anyType> class vector
         }
     }
 
-    anyType &operator[](int ind)
+    T &operator[](int ind)
     {
         if (ind >= 0 && ind < index)
         {
@@ -203,14 +200,14 @@ template <class anyType> class vector
     void clear_vector()
     {
         reset_vector();
-        anyType *data = new anyType[capacity];
+        T *data = new T[capacity];
     }
     void capacity_control()
     {
         if (index == capacity)
         {
             int newCapacity = capacity * 2;
-            anyType *tempData = new anyType[newCapacity];
+            T *tempData = new T[newCapacity];
             for (int i = 0; i < index; i++)
             {
                 tempData[i] = data[i];
@@ -228,7 +225,7 @@ template <class anyType> class vector
             }
             else
             {
-                anyType *tempData = new anyType[newCapacity];
+                T *tempData = new T[newCapacity];
                 for (int i = 0; i < index; i++)
                 {
                     tempData[i] = data[i];
@@ -240,11 +237,11 @@ template <class anyType> class vector
         }
     }
 
-    void insertUsingIndex(int ind, anyType var)
+    void insertUsingIndex(int ind, T var)
     {
         static int counter = 0;
         capacity_control();
-        anyType *tempVect = new anyType[capacity];
+        T *tempVect = new T[capacity];
         for (int i = 0; i < index + 1; i++)
         {
             if (ind == i)
@@ -268,7 +265,7 @@ template <class anyType> class vector
         {
             capacity_control();
             static int counter = 0;
-            anyType *tempVect = new anyType[capacity];
+            T *tempVect = new T[capacity];
             for (int i = 0; i < index; i++)
             {
                 if (ind == i)

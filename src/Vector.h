@@ -199,7 +199,8 @@ template <class T> class Vector
     void clear_vector()
     {
         reset_vector();
-        m_data = new T[m_capacity];
+        T* tempVector = new T[m_capacity];
+        m_data = tempVector;
     }
     void capacity_control()
     {

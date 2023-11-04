@@ -1,10 +1,11 @@
 #include "LinkedList.h"
 
-int main() {
-  LinkedList<int> myList;
+int main()
+{
+    LinkedList<int> myList;
 
-  myList.push_back(1);
-  myList.push_back(2);
+    myList.push_back(1);
+    myList.push_back(2);
 
-  return 0;
+    return 0;
 }

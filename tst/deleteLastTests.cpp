@@ -28,4 +28,3 @@ TYPED_TEST(LinkedListTest, DeleteLastOnEmptyList)
     // Check if the list is empty as expected
     EXPECT_TRUE(this->list.isEmpty());
 }
-

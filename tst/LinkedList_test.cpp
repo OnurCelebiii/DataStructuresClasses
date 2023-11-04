@@ -23,9 +23,9 @@ TYPED_TEST_SUITE(LinkedListTest, MyTypes);
 
 #include "deleteLastTests.cpp"
 #include "getSizeTests.cpp"
+#include "insertAfterIndexTests.cpp"
 #include "isEmptyTests.cpp"
 #include "searchTests.cpp"
-#include "insertAfterIndexTests.cpp"
 
 // Main function to run all tests
 int main(int argc, char **argv)

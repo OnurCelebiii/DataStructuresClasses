@@ -1,25 +1,27 @@
-TYPED_TEST(LinkedListTest, SearchInEmptyList) {
-    EXPECT_FALSE(this->list.search(TypeParam{}));
-}
+TYPED_TEST(LinkedListTest, SearchInEmptyList) { EXPECT_FALSE(this->list.search(TypeParam{})); }
 
-TYPED_TEST(LinkedListTest, SearchNonExistingSingleElement) {
+TYPED_TEST(LinkedListTest, SearchNonExistingSingleElement)
+{
     this->list.push_back(TypeParam{});
     EXPECT_FALSE(this->list.search(TypeParam{} + 1));
 }
 
-TYPED_TEST(LinkedListTest, SearchExistingSingleElement) {
+TYPED_TEST(LinkedListTest, SearchExistingSingleElement)
+{
     this->list.push_back(TypeParam{1});
     EXPECT_TRUE(this->list.search(TypeParam{1}));
 }
 
-TYPED_TEST(LinkedListTest, SearchExistingMultipleElements) {
+TYPED_TEST(LinkedListTest, SearchExistingMultipleElements)
+{
     this->list.push_back(TypeParam{1});
     this->list.push_back(TypeParam{2});
     this->list.push_back(TypeParam{3});
     EXPECT_TRUE(this->list.search(TypeParam{2}));
 }
 
-TYPED_TEST(LinkedListTest, SearchNonExistingMultipleElements) {
+TYPED_TEST(LinkedListTest, SearchNonExistingMultipleElements)
+{
     this->list.push_back(TypeParam{1});
     this->list.push_back(TypeParam{2});
     this->list.push_back(TypeParam{3});
@@ -29,7 +31,8 @@ TYPED_TEST(LinkedListTest, SearchNonExistingMultipleElements) {
 using StdStringLinkedList = LinkedListTest<std::string>;
 
 // Testing search for a character in a list of chars
-TEST_F(StdStringLinkedList, SearchStdStringInList) {
+TEST_F(StdStringLinkedList, SearchStdStringInList)
+{
     LinkedList<std::string> list;
     list.push_back("Onur");
     list.push_back("Caner");
@@ -37,6 +40,3 @@ TEST_F(StdStringLinkedList, SearchStdStringInList) {
     EXPECT_TRUE(list.search("Caner"));
     EXPECT_FALSE(list.search("Fuat"));
 }
-
-
-

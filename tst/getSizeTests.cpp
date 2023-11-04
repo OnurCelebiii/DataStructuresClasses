@@ -1,7 +1,4 @@
-TYPED_TEST(LinkedListTest, IsEmptyOnCreation) 
-{ 
-    EXPECT_EQ(this->list.getSize(), 0); 
-}
+TYPED_TEST(LinkedListTest, IsEmptyOnCreation) { EXPECT_EQ(this->list.getSize(), 0); }
 
 TYPED_TEST(LinkedListTest, IsOneAfterAddingOneElement)
 {

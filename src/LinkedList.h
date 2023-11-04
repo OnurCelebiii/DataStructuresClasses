@@ -39,9 +39,9 @@ template <class T> class LinkedList
         index = 1;
     }
 
-    const int getIndex() { return index; }
+    int getSize() { return index; }
 
-    const bool isEmpty() { return (index == 0 || head == nullptr); }
+    bool isEmpty() { return (index == 0 || head == nullptr); }
 
     void push_back(T var)
     {

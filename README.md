@@ -1,7 +1,7 @@
 [![CMake](https://github.com/Mavrikant/Linked-List-Class-Cpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/Mavrikant/Linked-List-Class-Cpp/actions/workflows/cmake.yml)
 
 # Linked Listed Class Implementation in C++
-- getIndex
+- getSize
 - push_back
 - push_front
 - print_list

@@ -1,34 +1,33 @@
 #include "LinkedList.h"
 #include <gtest/gtest.h>
 
-TEST(isEmpty, false)
+// Test fixture for LinkedList tests
+template <typename T> class LinkedListTest : public ::testing::Test
 {
-    LinkedList<int> myList;
+  protected:
+    LinkedList<T> list;
 
-    myList.push_back(1);
-    myList.push_back(2);
+    void SetUp() override
+    {
+        // You can set up initial conditions for all tests here if needed
+    }
 
-    ASSERT_EQ(false, myList.isEmpty());
-}
+    void TearDown() override
+    {
+        // Clean up after each test case if needed
+    }
+};
 
-TEST(isEmpty, true)
-{
-    LinkedList<int> myList;
+using MyTypes = ::testing::Types<char, int, double>; // Add more types if needed
+TYPED_TEST_SUITE(LinkedListTest, MyTypes);
 
-    myList.push_back(1);
-    myList.deleteFirst();
-    myList.deleteFirst();
+#include "deleteLastTests.cpp"
+#include "getSizeTests.cpp"
+#include "isEmptyTests.cpp"
+#include "searchTests.cpp"
+#include "insertAfterIndexTests.cpp"
 
-    ASSERT_EQ(true, myList.isEmpty());
-}
-
-TEST(isEmpty, initial)
-{
-    LinkedList<int> myList;
-
-    ASSERT_EQ(true, myList.isEmpty());
-}
-
+// Main function to run all tests
 int main(int argc, char **argv)
 {
     testing::InitGoogleTest(&argc, argv);

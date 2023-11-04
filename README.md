@@ -28,3 +28,7 @@
 - printWithAddress
 - indexValueChange
 - insertUsingIndex
+- operator[]
+- reset_vector
+- clear_vector
+- capacity_control

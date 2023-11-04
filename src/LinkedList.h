@@ -1,32 +1,39 @@
 #include <iostream>
 
 // Node Struct
-template <class anyType> struct Node {
+template <class anyType>
+struct Node
+{
   anyType variable;
   Node *next;
 };
 
 // LinkedList Class
-template <class anyType> class LinkedList {
+template <class anyType>
+class LinkedList
+{
 private:
   int index;
   Node<anyType> *tail;
   Node<anyType> *head;
 
-  void emptyListAddNode(Node<anyType> *var) {
+  void emptyListAddNode(Node<anyType> *var)
+  {
     head = var;
     tail = var;
     tail->next = nullptr;
   }
 
 public:
-  LinkedList() {
+  LinkedList()
+  {
     head = nullptr;
     tail = nullptr;
     index = 0;
   }
 
-  LinkedList(anyType var) {
+  LinkedList(anyType var)
+  {
     Node<anyType> *temp = new Node<anyType>;
     temp->variable = var;
     temp->next = nullptr;
@@ -38,45 +45,58 @@ public:
 
   const bool isEmpty() { return (index == 0 || head == nullptr); }
 
-  void push_back(anyType var) {
+  void push_back(anyType var)
+  {
     Node<anyType> *temp = new Node<anyType>;
     temp->variable = var;
     temp->next = nullptr;
-    if (head == nullptr || index == 0) {
+    if (head == nullptr || index == 0)
+    {
       emptyListAddNode(temp);
-    } else {
+    }
+    else
+    {
       tail->next = temp;
       tail = temp;
     }
     index++;
   }
 
-  void push_front(anyType var) {
+  void push_front(anyType var)
+  {
     Node<anyType> *temp = new Node<anyType>;
     temp->variable = var;
     temp->next = nullptr;
-    if (head == nullptr || index == 0) {
+    if (head == nullptr || index == 0)
+    {
       emptyListAddNode(temp);
-    } else {
+    }
+    else
+    {
       temp->next = head;
       head = temp;
     }
     index++;
   }
 
-  void print_list() {
+  void print_list()
+  {
     Node<anyType> *temp = head;
-    while (temp != nullptr) {
+    while (temp != nullptr)
+    {
       std::cout << temp->variable << std::endl;
       temp = temp->next;
     }
   }
 
-  bool search(anyType var) {
+  bool search(anyType var)
+  {
     Node<anyType> *temp = head;
     bool find = false;
-    while (temp != nullptr) {
-      if (temp->variable == var) {
+    while (temp != nullptr)
+    {
+      if (temp->variable == var)
+      {
         find = true;
       }
       temp = temp->next;
@@ -84,13 +104,14 @@ public:
     return find;
   }
 
-  void deleteLast() {
-    if (isEmpty() == true) {
-      std::cout << "List Empty !!" << std::endl;
-    } else {
+  void deleteLast()
+  {
+    if (!isEmpty())
+    {
       Node<anyType> *currentNode = head;
       Node<anyType> *previousNode = head;
-      while (currentNode->next != nullptr) {
+      while (currentNode->next != nullptr)
+      {
         previousNode = currentNode;
         currentNode = currentNode->next;
       }
@@ -101,10 +122,10 @@ public:
     }
   }
 
-  void deleteFirst() {
-    if (isEmpty() == true) {
-      std::cout << "List Empty !!" << std::endl;
-    } else {
+  void deleteFirst()
+  {
+    if (!isEmpty())
+    {
       Node<anyType> *temp = head;
       temp = temp->next;
       delete head;
@@ -113,20 +134,26 @@ public:
     }
   }
 
-  void deleteIndex(int ind) {
-    if (isEmpty() == true) {
-      std::cout << "List Empty !!" << std::endl;
-    } else {
-      if (ind == 1) {
+  void deleteIndex(int ind)
+  {
+    if (!isEmpty())
+    {
+      if (ind == 1)
+      {
         deleteFirst();
-      } else if (ind == index) {
+      }
+      else if (ind == index)
+      {
         deleteLast();
-      } else {
+      }
+      else
+      {
         static int counter = 1;
         Node<anyType> *currentAddr = head;
         Node<anyType> *prevAddr = head;
 
-        while (counter < ind) {
+        while (counter < ind)
+        {
           prevAddr = currentAddr;
           currentAddr = currentAddr->next;
           counter++;
@@ -137,11 +164,14 @@ public:
       index--;
     }
   }
-  Node<anyType> *searchReturnAddr(anyType var) {
+  Node<anyType> *searchReturnAddr(anyType var)
+  {
     Node<anyType> *returnAddr = nullptr;
     Node<anyType> *currentAddr = head;
-    while (currentAddr != nullptr) {
-      if (currentAddr->variable == var) {
+    while (currentAddr != nullptr)
+    {
+      if (currentAddr->variable == var)
+      {
         returnAddr = currentAddr;
       }
       currentAddr = currentAddr->next;
@@ -149,17 +179,26 @@ public:
     return returnAddr;
   }
 
-  void deleteValue(anyType val) {
-    if (search(val) == true) {
-      if (head->variable == val) {
+  void deleteValue(anyType val)
+  {
+    if (search(val) == true)
+    {
+      if (head->variable == val)
+      {
         deleteFirst();
-      } else if (tail->variable == val) {
+      }
+      else if (tail->variable == val)
+      {
         deleteLast();
-      } else {
+      }
+      else
+      {
         Node<anyType> *current = head;
         Node<anyType> *prev = head;
-        while (current != nullptr) {
-          if (current->variable == val) {
+        while (current != nullptr)
+        {
+          if (current->variable == val)
+          {
             break;
           }
           prev = current;
@@ -168,28 +207,31 @@ public:
         prev->next = current->next;
         delete current;
       }
-    } else {
-      std::cout << "Value not fount !!!" << std::endl;
     }
   }
 
-  void insertAfterIndex(anyType var, int ind) {
+  void insertAfterIndex(anyType var, int ind)
+  {
 
-    if (ind < 1 || ind > index + 1) {
-      std::cout << "Invalid index" << std::endl;
+    if (ind < 1 || ind > index + 1)
+    {
       return;
     }
     Node<anyType> *temp = new Node<anyType>;
     temp->variable = var;
     temp->next = nullptr;
-    if (ind == 1) {
+    if (ind == 1)
+    {
       temp->next = head->next;
       head->next = temp;
-    } else {
+    }
+    else
+    {
       Node<anyType> *current = head;
       int counter = 1;
 
-      while (counter < ind) {
+      while (counter < ind)
+      {
         current = current->next;
         counter++;
       }

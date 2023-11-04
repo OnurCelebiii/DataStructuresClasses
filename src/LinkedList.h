@@ -1,10 +1,9 @@
-// LinkListClass.h
 #include <iostream>
 using namespace std;
 
 
-template <class anyType>
 // Node Struct
+template <class anyType>
 struct Node{
     anyType variable;
     Node* next;
@@ -12,7 +11,6 @@ struct Node{
 
 // LinkedList Class
 template <class anyType>
-
 class LinkedList{
     private:
 

@@ -1,4 +1,4 @@
-# Single-Link-List-Class
+# Linked Listed Class Implementation in C++
 - getIndex
 - push_back
 - push_front

@@ -38,6 +38,17 @@
 - capacity_control
 - deleteSpesificIndex 
 
+## Double Link List Class
+- getLength
+- forwardPrintList
+- backwardPrintList
+- addFirst
+- addLast
+- deleteFirst
+- deleteLast
+- isDoubleListEmpty
+- getIndex
+
 
 ## Compile
 * ```git submodule update --init --recursive``` get gtest library

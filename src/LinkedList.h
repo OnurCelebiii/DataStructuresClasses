@@ -39,6 +39,18 @@ template <class T> class LinkedList
         index = 1;
     }
 
+    LinkedList(const LinkedList & otherList) // deep copy
+    {
+        head = nullptr;
+        tail = nullptr;
+        Node<T>* current = otherList.head;
+        while(current != nullptr)
+        {
+            push_back(current->variable);
+            current = current->next;
+        }
+    }
+
     int getSize() { return index; }
 
     bool isEmpty() { return (index == 0 || head == nullptr); }

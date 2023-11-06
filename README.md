@@ -3,6 +3,7 @@
 # Data Sctructures Impelemented in C++
 
 ## Linked List Class
+- LinkedList Deep Copy Constructor
 - getSize
 - push_back
 - push_front
